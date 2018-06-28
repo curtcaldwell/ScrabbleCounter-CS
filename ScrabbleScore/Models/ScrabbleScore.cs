@@ -15,9 +15,7 @@ namespace ScrabbleScore
     public char[] eight = {'j', 'x'};
     public char[] ten = {'q', 'z'};
 
-    public string userString = "";
-    List<string> scrabbleStringList = new List<string> {};
-    public int FindChar(string scrabbleString)
+    public void FindChar(char[] scrabbleString)
     {
       foreach(char scrabb in scrabbleString)
       {
@@ -71,7 +69,7 @@ namespace ScrabbleScore
           }
         }
       }
-      return scrabbleScore;
+      // return scrabbleScore;
       // char[] splitChar = scrabbleString.ToCharArray();
       // for(int i = 0; i < 11; i++)
       // {
@@ -89,12 +87,7 @@ namespace ScrabbleScore
      {
        scrabbleScore = 0;
      }
-    // public string SetString(string userString)
-    // {
-    //   //userString = Console.ReadLine();
-    //   // scrabbleStringList.Add(userString);
-    //   //return scrabbleStringList[0];
-    // }
+
   }
   public class Program
   {
@@ -102,10 +95,12 @@ namespace ScrabbleScore
     {
       ScrabbleScoreCount newWord = new ScrabbleScoreCount();
       Console.WriteLine("gimma a word: ");
-      userString = Console.Readline();
+      string userString = Console.ReadLine();
       userString = userString.ToLower();
-      newWord.FindChar(userString);
-      Console.WriteLine(newWord.GetScore);
+      char[] userCharArray = userString.ToCharArray();
+      newWord.FindChar(userCharArray);
+      int score = newWord.GetScore();
+      Console.WriteLine(score);
     }
   }
 }
