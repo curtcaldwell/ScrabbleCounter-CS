@@ -1,12 +1,111 @@
+using System;
+using System.Collections.Generic;
+
 namespace ScrabbleScore
 {
-public class ScrabbleScore
+  public class ScrabbleScoreCount
   {
-  public bool ExampleTest(int year)
+    public int scrabbleScore = 0;
+
+    public char[] one = {'a', 'e', 'i', 'o', 'u', 'l', 'n', 'r', 's', 't'};
+    public char[] two = {'d', 'g'};
+    public char[] three = {'b', 'c', 'm', 'p'};
+    public char[] four = {'f', 'h', 'v', 'w', 'y'};
+    public char[] five = {'k'};
+    public char[] eight = {'j', 'x'};
+    public char[] ten = {'q', 'z'};
+
+    public string userString = "";
+    List<string> scrabbleStringList = new List<string> {};
+    public int FindChar(string scrabbleString)
     {
-      // logic will go here
-      return false;
+      foreach(char scrabb in scrabbleString)
+      {
+        foreach(char c in one)
+        {
+          if(scrabb == c)
+          {
+            scrabbleScore++;
+          }
+        }
+        foreach(char c in two)
+        {
+          if(scrabb == c)
+          {
+            scrabbleScore += 2;
+          }
+        }
+        foreach(char c in three)
+        {
+          if(scrabb == c)
+          {
+            scrabbleScore += 3;
+          }
+        }
+        foreach(char c in four)
+        {
+          if(scrabb == c)
+          {
+            scrabbleScore += 4;
+          }
+        }
+        foreach(char c in five)
+        {
+          if(scrabb == c)
+          {
+            scrabbleScore += 5;
+          }
+        }
+        foreach(char c in eight)
+        {
+          if(scrabb == c)
+          {
+            scrabbleScore += 8;
+          }
+        }
+        foreach(char c in ten)
+        {
+          if(scrabb == c)
+          {
+            scrabbleScore += 10;
+          }
+        }
+      }
+      return scrabbleScore;
+      // char[] splitChar = scrabbleString.ToCharArray();
+      // for(int i = 0; i < 11; i++)
+      // {
+      //   if(splitChar[i] = one[i])
+      //   {
+      //     scrabbleScore++;
+      //   }
+      // }
+    }
+    public int GetScore()
+    {
+      return scrabbleScore;
+    }
+     public void ClearScore()
+     {
+       scrabbleScore = 0;
+     }
+    // public string SetString(string userString)
+    // {
+    //   //userString = Console.ReadLine();
+    //   // scrabbleStringList.Add(userString);
+    //   //return scrabbleStringList[0];
+    // }
+  }
+  public class Program
+  {
+    public static void Main()
+    {
+      ScrabbleScoreCount newWord = new ScrabbleScoreCount();
+      Console.WriteLine("gimma a word: ");
+      userString = Console.Readline();
+      userString = userString.ToLower();
+      newWord.FindChar(userString);
+      Console.WriteLine(newWord.GetScore);
     }
   }
 }
-  
